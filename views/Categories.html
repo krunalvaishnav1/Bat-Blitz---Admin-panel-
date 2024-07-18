@@ -1,0 +1,156 @@
+<div class="container pt-5 mb-5">
+  <h3 class="d-flex mb-3">
+    <span class="me-auto">Categories</span>
+    <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addNewCatModal">
+      Add New Category
+    </button>
+  </h3>
+  <div class="card">
+    <div class="card-header">
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text">Filter: </span>
+        <div class="btn-group btn-group-sm" role="group">
+          <input type="radio" class="btn-check" name="filter" id="filter1" value="type" ng-model="searchType" />
+          <label class="btn btn-outline-primary" for="filter1">Type</label>
+
+          <input type="radio" class="btn-check" name="filter" id="filter2" value="created" ng-model="searchType" />
+          <label class="btn btn-outline-primary" for="filter2">Created</label>
+        </div>
+        <input type="search" class="form-control" id="filter-text" value="" ng-model="searchText" />
+      </div>
+    </div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th ng-click="customOrderBy('type')" ng-class="{activeHeader:orderByField==='type', reverse:reverseOrder}">
+            Type
+          </th>
+          <th ng-click="customOrderBy('created')">
+            Created
+          </th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr ng-show="!categories.length">
+          <td colspan="4">No records found...</td>
+        </tr>
+
+        <tr
+          ng-repeat="category in categories  | orderBy:orderByField:reverseOrder | searchFilter:searchType:searchText">
+          <td>{{$index+1}}</td>
+          <td>{{category.type}}</td>
+          <td>{{category.created}}</td>
+          <td width="150px">
+            <div class="btn-group btn-group-sm">
+              <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editCatModal" title="Edit"
+                ng-click="selectCategory(category.id)">
+                <i class="fa fa-edit"></i>
+              </button>
+              <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteCatModal"
+                title="Delete" ng-click="selectCategory(category.id)">
+                <i class="fa fa-trash"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- add new category -->
+
+  <div class="modal fade" id="addNewCatModal" tabindex="" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addNewCategory">Add New Category</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form ng-submit="addNewCategory()" name="batCatAddForm" novalidate>
+            <div class="mb-3">
+              <label for="categoryName" class="form-label">Category Type</label>
+              <input type="text" class="form-control" id="categoryName" ng-model="newCategory.type" name="categoryName"
+                placeholder="Enter category name" ng-required="true">
+            </div>
+            <div
+              ng-show="batCatAddForm.categoryName.$error && batCatAddForm.categoryName.$touched && batCatAddForm.categoryName.$invalid "
+              class="text-danger">Brand Name is required.
+            </div>
+            <button type="button" class="btn btn-primary" ng-click="addNewCategory()"
+              ng-disabled="batCatAddForm.$invalid">Save</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- edit category  -->
+
+<div class="modal fade" id="editCatModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Category</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form name="batCatEditForm" ng-submit="updateCategory()" novalidate>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="type" class="col-form-label">Type:</label>
+            <input type="text" class="form-control" id="type" name="edittype" ng-model="selectedCategory.type"
+              ng-required="true" />
+            <div
+              ng-show="batCatEditForm.edittype.$error && batCatEditForm.edittype.$touched && batCatEditForm.edittype.$invalid "
+              class="text-danger">Brand Name is required.
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Close
+          </button>
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" ng-disabled="batCatEditForm.$invalid">
+            Save changes
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- delete category  -->
+
+<div class="modal fade" id="deleteCatModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Category</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Are you sure! you want to delete '{{selectedCategory.type}}'
+          category?
+        </p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button class="btn btn-danger deleteCategory" ng-click="deleteCategory()" data-bs-dismiss="modal">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

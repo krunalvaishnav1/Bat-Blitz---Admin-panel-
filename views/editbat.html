@@ -1,0 +1,125 @@
+<div class="container pt-5">
+    <form name="bateditForm" ng-submit="submitForm()">
+
+        <h3 class="d-flex mb-3">
+            <span class="me-auto">Edit Bat</span>
+        </h3>
+
+        <div class="row mb-3">
+            <div class="col-md-8">
+                <input type="hidden" id="id" ng-model="bats[batId-1].id" />
+                <div class="card">
+                    <div class="card-header">
+                        <span>Update Details</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="title" class="col-form-label">Brand Name:</label>
+                            <input type="text" class="form-control" name="brand" id="title"
+                                ng-model="bats[batId-1].brand" ng-required="true" />
+                            <div ng-show="bateditForm.brand.$error && bateditForm.brand.$touched && bateditForm.brand.$invalid "
+                                class="text-danger">Brand Name is required.</div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="type" class="form-label">Category(Willow)</label>
+                                <select class="form-select" id="type" name="type" ng-model="bats[batId-1].type"
+                                    ng-required="true">
+                                    <option value="" disabled>Select Category</option>
+                                    <option value="Indoor Bat">Indoor Bat</option>
+                                    <option value="English Willow">English Willow</option>
+                                    <option value="Kashmir Willow">Kashmir Willow</option>
+                                </select>
+                                <div ng-show="bateditForm.type.$error && bateditForm.type.$touched && bateditForm.type.$invalid"
+                                    class="text-danger">Category is required. </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="price" class="form-label">Price (₹)</label>
+                                <input class="form-control" type="text" name="price" id="price"
+                                    ng-model="bats[batId-1].price" ng-required="true" />
+                                <div ng-show="bateditForm.price.$error && bateditForm.price.$touched && bateditForm.price.$invalid"
+                                    class="text-danger">
+                                    Price is required.</div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="blade" class="form-label">Blade Type</label>
+                                <select class="form-select" id="blade" name="blade" ng-model="bats[batId-1].blade"
+                                    ng-required="true">
+                                    <option value="" disabled>Select Blade</option>
+                                    <option value="PVC/Plastic">PVC/Plastic</option>
+                                    <option value="Willow wood">Willow wood</option>
+                                </select>
+                                <div ng-show="bateditForm.blade.$error && bateditForm.blade.$touched && bateditForm.blade.$invalid"
+                                    class="text-danger">
+                                    Blade Type is required.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="weight" class="form-label">Weight Range (gm)</label>
+                                <input class="form-control" type="text" name="weight" id="weight"
+                                    ng-model="bats[batId-1].weight_range" ng-required="true" />
+                                <div ng-show="bateditForm.weight.$error && bateditForm.weight.$touched && bateditForm.weight.$invalid"
+                                    class="text-danger">
+                                    Weight Range is required.</div>
+                            </div>
+
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="grip" class="form-label">Grip</label>
+                                <input class="form-control" type="text" name="grip" id="grip"
+                                    ng-model="bats[batId-1].grip" ng-required="true" />
+                                <div ng-show="bateditForm.grip.$error && bateditForm.grip.$touched && bateditForm.grip.$invalid"
+                                    class="text-danger">Grip
+                                    is required.</div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="suitable" class="form-label">Suitable for(ball)</label>
+                                <input class="form-control" type="text" name="ballType" id="suitable"
+                                    placeholder=" Leather Ball" ng-model="bats[batId-1].price" ng-required="true" />
+                                <div ng-show="bateditForm.ballType.$error && bateditForm.ballType.$touched && bateditForm.ballType.$invalid"
+                                    class="text-danger">Ball Type is required.</div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3 col-md-12">
+                            <label for="description" class="form-label">Description</label>
+                            <ng-quill-editor id="description" name="description" ng-model="bats[batId-1].description"
+                                ng-required="true"></ng-quill-editor>
+                            <div ng-show="bateditForm.description.$error && bateditForm.description.$touched && bateditForm.description.$invalid"
+                                class="text-danger">Description is required.</div>
+                        </div>
+                        <div>
+                            <a href="#!/batlist" class="btn btn-sm btn-primary" ng-disabled="bateditForm.$invalid">Save changes</a>
+                            <a href="#!/batlist" class="btn btn-sm btn-danger">Close</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">Update Feature Image</div>
+                    <div class="card mb-4">
+                        <div class="card-img-container d-flex  align-items-center" style="height: 450px;">
+                            <img src="{{bats[batId-1].img}}" class="card-img-top"
+                                style="max-height: 100%; max-width: 100%; object-fit: contain;" alt="">
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <label for="fimage" class="form-label">Update Image</label>
+                        <input class="form-control" type="file" id="fimage" />
+                    </div>
+                    <button type="submit" class="btn btn-sm btn-success">
+                        Save changes
+                    </button>
+                </div>
+            </div>
+        </div>
+</div>
+</form>
+</div>

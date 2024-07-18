@@ -1,0 +1,39 @@
+<div class="container pt-5">
+  <div class="row mb-4">
+    <div class="col">
+      <div class="d-flex justify-content-between align-items-center">
+        <h3 class="mb-0">Bat Detail</h3>
+        <a href="#!/batlist" class="btn btn-outline-danger"><i class="fa-solid fa-xmark" ></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card mb-4">
+        <div class="card-img-container d-flex justify-content-center align-items-center" style="height: 372px;">
+          <img src="{{bats[batId-1].img}}" class="card-img-top"
+            style="max-height: 100%; max-width: 100%; object-fit: contain;" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="card mb-4">
+        <div class="card-body">
+          <p class="card-text"><strong>Brand:</strong> {{bats[batId-1].brand}}</p>
+          <p class="card-text"><strong>Type:</strong> {{bats[batId-1].type}}</p>
+          <p class="card-text"><strong>Blade:</strong> {{bats[batId-1].blade}}</p>
+          <p class="card-text"><strong>Grip:</strong> {{bats[batId-1].grip}}</p>
+          <p class="card-text"><strong>Weight Range:</strong> {{bats[batId-1].weight_range}}</p>
+          <p class="card-text"><strong>Price:</strong> {{bats[batId-1].price}}</p>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><strong>Description:</strong></h5>
+            <p class="card-text">{{bats[batId-1].description}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

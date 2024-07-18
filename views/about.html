@@ -1,0 +1,48 @@
+<div class="container pt-5 mb-5">
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <h3>Logo</h3>
+            <div class="card">
+                <div class="card-header d-flex">
+                    <span class="me-auto">Existing Logo</span>
+                    <button class="btn btn-sm btn-success">Change</button>
+                </div>
+                <img src="IMG/bat-blitz-high-resolution-logo.png" alt="..." width="me-auto" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h3>Page Header Image</h3>
+            <div class="card">
+                <div class="card-header d-flex">
+                    <span class="me-auto">Existing Image</span>
+                    <button class="btn btn-sm btn-success">Change</button>
+                </div>
+                <img src="IMG/main.jpeg" class="card-img-bottom" alt="..." height="180px" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h3>About Header Image</h3>
+            <div class="card">
+                <div class="card-header d-flex">
+                    <span class="me-auto">Existing Image</span>
+                    <button class="btn btn-sm btn-success">Change</button>
+                </div>
+                <img src="IMG/about.jpg" class="card-img-bottom" alt="..." height="180px" />
+            </div>
+        </div>
+    </div>
+
+    <h3>About Content</h3>
+    <div class="card">
+        <div class="card-header">Existing Content</div>
+        <div class="card-body">
+            <form>
+                <div class="mb-3">
+                    <label for="aboutText" class="form-label">Update text</label>
+                    <ng-quill-editor id="aboutText" name="about" ng-model="abouts.about"></ng-quill-editor>
+                </div>
+                <button type="submit" class="btn btn-sm btn-success">Update</button>
+            </form>
+        </div>
+    </div>
+</div>  

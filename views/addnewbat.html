@@ -1,0 +1,110 @@
+<div class="container pt-5 mb-5">
+    <form name="batForm" ng-submit="submitForm()" novalidate>
+        <h3 class="d-flex mb-3">
+            <span class="me-auto">Add New Bat</span>
+        </h3>
+
+        <div class="card">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <span>Add your bat data</span>
+                    <a href="#!/batlist" class="btn btn-outline-danger"><i class="fa-solid fa-xmark"></i></a>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="title" class="form-label">Brand Name:</label>
+                            <input type="text" class="form-control" id="title" name="brand" ng-model="brand"
+                                ng-required="true" />
+                            <div ng-show="batForm.brand.$error && batForm.brand.$touched && batForm.brand.$invalid "
+                                class="text-danger">Brand Name is required.</div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="fimage" class="form-label">Bat Image</label>
+                            <input class="form-control" type="text" id="fimage" name="imageUrl"
+                                placeholder="Give a image url" ng-model="imageUrl" ng-required="true" />
+                            <div ng-show="batForm.imageUrl.$error && batForm.imageUrl.$touched && batForm.imageUrl.$invalid"
+                                class="text-danger">Image URL is required.</div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-4">
+                            <label for="category" class="form-label">Category(Willow)</label>
+                            <select class="form-select" id="category" name="type" ng-model="type" ng-required="true">
+                                <option value="" disabled>Select Category</option>
+                                <option value="Indoor Bats">Indoor Bats</option>
+                                <option value="English Willow">English Willow</option>
+                                <option value="Kashmir Willow">Kashmir Willow</option>
+                            </select>
+                            <div ng-show="batForm.type.$error && batForm.type.$touched && batForm.type.$invalid" class="text-danger">Category is required. </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="price" class="form-label">Price (₹)</label>
+                            <div class="input-group">
+                                <span class="input-group-text">₹</span>
+                                <input class="form-control" type="number" id="price" name="price" ng-model="price"
+                                    ng-required="true" />
+                            </div>
+                            <div ng-show="batForm.price.$error && batForm.price.$touched && batForm.price.$invalid" class="text-danger">
+                                Price is required.</div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="grip" class="form-label">Grip</label>
+                            <input class="form-control" type="text" id="grip" name="grip" ng-model="grip"
+                                ng-required="true" />
+                            <div ng-show="batForm.grip.$error && batForm.grip.$touched && batForm.grip.$invalid" class="text-danger">Grip
+                                is required.</div>
+                        </div>
+
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label for="weight" class="form-label">Weight Range (gm)</label>
+                            <div class="input-group">
+                                <span class="input-group-text">gm</span>
+                                <input class="form-control" type="number" id="weight" name="weight" ng-model="weight"
+                                    ng-required="true" />
+                            </div>
+                            <div ng-show="batForm.weight.$error && batForm.weight.$touched && batForm.weight.$invalid" class="text-danger">
+                                Weight Range is required.</div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="blade" class="form-label">Blade Type</label>
+                            <select class="form-select" id="blade" name="blade" ng-model="blade" ng-required="true">
+                                <option value="" disabled>Select Blade</option>
+                                <option value="PVC/Plastic">PVC/Plastic</option>
+                                <option value="Willow wood">Willow wood</option>
+                            </select>
+                            <div ng-show="batForm.blade.$error && batForm.blade.$touched && batForm.blade.$invalid" class="text-danger">
+                                Blade Type is required.</div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="suitable" class="form-label">Suitable for(ball)</label>
+                            <input class="form-control" type="text" id="suitable" name="ballType"
+                                placeholder=" Leather Ball" ng-model="ballType" ng-required="true" />
+                            <div ng-show="batForm.ballType.$error && batForm.ballType.$touched && batForm.ballType.$invalid"
+                                class="text-danger">Ball Type is required.</div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-12">
+                            <label for="description" class="form-label">Description</label>
+                            <ng-quill-editor id="description" name="description" ng-model="description"
+                                ng-required="true"></ng-quill-editor>
+                            <div ng-show="batForm.description.$error && batForm.description.$touched && batForm.description.$invalid"
+                                class="text-danger">Description is required.</div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-sm btn-success" ng-disabled="batForm.$invalid">Save
+                        changes</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
